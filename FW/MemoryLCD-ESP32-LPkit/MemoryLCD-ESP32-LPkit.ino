@@ -10,15 +10,16 @@
 * https://github.com/adafruit/Adafruit_SHARP_Memory_Display
 * https://github.com/adafruit/Adafruit-GFX-Library
 */
+
 #include <WiFi.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SharpMem.h>
 #include "bitmap.h"
 
 // SPI
-#define SHARP_SCK  18
-#define SHARP_MOSI 23
-#define SHARP_SS   5
+#define SHARP_SCK  18 //14 //18
+#define SHARP_MOSI 23 //13 //23
+#define SHARP_SS   5 //32 //5
 
 // definition of display and connection
 Adafruit_SharpMem display(SHARP_SCK, SHARP_MOSI, SHARP_SS, 400, 240);
@@ -36,9 +37,8 @@ void setup() {
   display.clearDisplay(); // clear display
   display.setCursor(0,0); // set cursor
   display.setTextColor(BLACK, WHITE); // set color
-  display.fillRect( 0,  0,  400,  240,  BLACK);
 
-  //display.drawBitmap(0, 0, logo, 400, 240, BLACK); // put logo - bitmap.h
+  display.drawBitmap(0, 0, logo, 400, 240, BLACK); // put logo - bitmap.h
 
   display.refresh(); // update the screen
 
