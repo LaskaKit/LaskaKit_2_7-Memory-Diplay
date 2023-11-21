@@ -1,7 +1,7 @@
 /*
 * Example code for 2.7" memoryLCD https://www.laskakit.cz/laskakit-2-7--400x240-lcd-memory-displej/ 
 * with LaskaKit boards
-* This example shows black screen. 
+* This example shows the bitmap on the screen. 
 * 
 * made by laskakit.cz
 * 
@@ -13,6 +13,7 @@
 #include <WiFi.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SharpMem.h>
+#include "bitmap.h"
 
 // SPI LaskaKit ESP32-LPKit https://www.laskakit.cz/laskakit-esp32-lpkit-pcb-antenna/
 //#define SHARP_SCK  18
@@ -39,8 +40,8 @@ Adafruit_SharpMem display(SHARP_SCK, SHARP_MOSI, SHARP_CS, 400, 240);
 
 void setup() {
 
-  pinMode(USUP_POWER, OUTPUT);    // Set uSUP connector power transistor as output
-  digitalWrite(USUP_POWER, HIGH); // Turn power ON uSUP connector
+  pinMode(2, OUTPUT);    // Set uSUP connector power transistor as output
+  digitalWrite(2, HIGH); // Turn power ON uSUP connector
   delay(100);            // Delay so it has time to turn on
 
   WiFi.mode(WIFI_MODE_NULL); // disable Wi-Fi
@@ -52,8 +53,8 @@ void setup() {
   display.clearDisplay(); // clear display
   display.setCursor(0,0); // set cursor
   display.setTextColor(BLACK, WHITE); // set color
-  display.fillRect( 0,  0,  400,  240,  BLACK);
-  Serial.println("Black");
+
+  display.drawBitmap(0, 0, logo, 400, 240, BLACK); // put logo - bitmap.h
 
   display.refresh(); // update the screen
 
