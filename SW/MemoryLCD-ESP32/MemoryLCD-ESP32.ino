@@ -40,8 +40,8 @@ Adafruit_SharpMem display(SHARP_SCK, SHARP_MOSI, SHARP_CS, 400, 240);
 
 void setup() {
 
-  pinMode(2, OUTPUT);    // Set uSUP connector power transistor as output
-  digitalWrite(2, HIGH); // Turn power ON uSUP connector
+  pinMode(USUP_POWER, OUTPUT);    // Set uSUP connector power transistor as output
+  digitalWrite(USUP_POWER, HIGH); // Turn power ON uSUP connector
   delay(100);            // Delay so it has time to turn on
 
   WiFi.mode(WIFI_MODE_NULL); // disable Wi-Fi
